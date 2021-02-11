@@ -17,20 +17,33 @@ public class RandNumGenerator {
         System.out.println("The lower bound is: " + lowerNum);
 
         //getting upper bound of range
-        System.out.println("Please input the upper bound of your range (i.e. 10)");
-        int upperNum = mrScanner.nextInt();
-        System.out.println("The upper bound is: " + lowerNum);
+        int invalNum = 1;
+        int upperNum;
+        while (invalNum != 0) {
+            System.out.println("Please input the upper bound of your range (i.e. 10)");
+            upperNum = mrScanner.nextInt();
+            if (upperNum < lowerNum) {
+                System.out.print("Your upper bound is less than your lower bound. Please input a valid integer.");
+            }
+            else {
+                invalNum = 0;
+                System.out.println("The upper bound is: " + upperNum);
+                //getting amount of numbers
+                System.out.println("How many random numbers would you like?");
+                int amtNum = mrScanner.nextInt();
+                System.out.println("Generating " + amtNum + " number(s):");
 
-        //getting amount of numbers
-        System.out.println("How many random numbers would you like?");
-        int amtNum = mrScanner.nextInt();
-        System.out.println("Generating " + amtNum + " number(s):");
+                int i = amtNum;
+                while (i > 0) {
+                    int randNum = lowerNum + rand.nextInt(upperNum - lowerNum);
+                    System.out.println(randNum);
+                    i--;
+            }
+        }
 
-        int i = amtNum;
-        while (i > 0) {
-            int randNum = lowerNum + rand.nextInt(upperNum - lowerNum);
-            System.out.println(randNum);
-            i--;
+
+
+
         }
     }
 }
